@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="item"
+            type="com.junsu.sample.model.Item" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/default_cell_margin"
+        android:paddingBottom="@dimen/default_cell_margin"
+        android:onClick="@{clickListener}">
+
+        <ImageView
+            android:id="@+id/view_cellItem_image"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:src="@{notification.isSuccess()? @drawable/ck_ok : @drawable/ck_error}"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/view_cellItem_image"
+            android:text="@{item.dateString}"
+            tools:text="test message"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/view_cellItem_image"
+            app:layout_constraintRight_toRightOf="parent"
+            android:text="@{item.message}"
+            tools:text="test message.."/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
