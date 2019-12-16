@@ -8,7 +8,7 @@ import com.junsu.base.extension.toByteArray
 import com.junsu.sample.Define
 import com.junsu.sample.model.Item
 import com.junsu.sample.model.ItemType
-import com.junsu.sample.sector.list.paged.network.api.ItemResponse
+import com.junsu.sample.section.list.paged.network.api.ItemResponse
 import okhttp3.Interceptor
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient

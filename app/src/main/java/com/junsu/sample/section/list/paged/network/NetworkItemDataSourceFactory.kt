@@ -1,9 +1,9 @@
-package com.junsu.sample.sector.list.paged.network
+package com.junsu.sample.section.list.paged.network
 
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.DataSource
 import com.junsu.sample.model.Item
-import com.junsu.sample.sector.list.paged.network.api.ItemService
+import com.junsu.sample.section.list.paged.network.api.ItemService
 import kotlinx.coroutines.CoroutineScope
 
 class NetworkItemDataSourceFactory(private val notificationService: ItemService,

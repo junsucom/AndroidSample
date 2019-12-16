@@ -1,4 +1,4 @@
-package com.junsu.sample.sector.list.paged.network.api
+package com.junsu.sample.section.list.paged.network.api
 
 import com.junsu.sample.Define
 import retrofit2.http.GET

@@ -1,4 +1,4 @@
-package com.junsu.sample.sector.home
+package com.junsu.sample.section.home
 
 import com.junsu.base.BaseFragment
 import com.junsu.sample.R

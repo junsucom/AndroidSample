@@ -1,4 +1,4 @@
-package com.junsu.sample.sector.list.paged.room
+package com.junsu.sample.section.list.paged.room
 
 import android.os.Bundle
 import android.view.View

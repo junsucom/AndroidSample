@@ -2,10 +2,10 @@ package com.junsu.sample.di
 
 import com.google.gson.GsonBuilder
 import com.junsu.sample.Define
-import com.junsu.sample.sector.home.HomeViewModel
-import com.junsu.sample.sector.list.paged.network.NetworkPagedListViewModel
-import com.junsu.sample.sector.list.paged.network.api.ItemService
-import com.junsu.sample.sector.list.paged.room.RoomPagedListViewModel
+import com.junsu.sample.section.home.HomeViewModel
+import com.junsu.sample.section.list.paged.network.NetworkPagedListViewModel
+import com.junsu.sample.section.list.paged.network.api.ItemService
+import com.junsu.sample.section.list.paged.room.RoomPagedListViewModel
 import com.junsu.sample.util.apiInterceptor
 import com.junsu.sample.util.room.AppDatabase
 import org.koin.android.ext.koin.androidContext

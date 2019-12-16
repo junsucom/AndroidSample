@@ -1,4 +1,4 @@
-package com.junsu.sample.sector.list.paged.network
+package com.junsu.sample.section.list.paged.network
 
 import android.os.Bundle
 import android.view.View
@@ -6,7 +6,7 @@ import androidx.lifecycle.observe
 import com.junsu.base.BaseFragment
 import com.junsu.sample.R
 import com.junsu.sample.databinding.FragmentListPagedNetworkBinding
-import com.junsu.sample.sector.list.paged.room.ItemAdapter
+import com.junsu.sample.section.list.paged.room.ItemAdapter
 import kotlinx.android.synthetic.main.fragment_list_paged_room.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber

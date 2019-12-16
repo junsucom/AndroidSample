@@ -1,4 +1,4 @@
-package com.junsu.sample.sector.home
+package com.junsu.sample.section.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

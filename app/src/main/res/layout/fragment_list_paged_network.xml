@@ -6,7 +6,7 @@
     <data>
         <variable
             name="vm"
-            type="com.junsu.sample.sector.list.paged.network.NetworkPagedListViewModel" />
+            type="com.junsu.sample.section.list.paged.network.NetworkPagedListViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

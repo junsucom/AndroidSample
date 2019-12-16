@@ -1,9 +1,9 @@
-package com.junsu.sample.sector.list.paged.network
+package com.junsu.sample.section.list.paged.network
 
 import androidx.paging.PageKeyedDataSource
 import com.junsu.sample.Define.PAGE_SIZE
 import com.junsu.sample.model.Item
-import com.junsu.sample.sector.list.paged.network.api.ItemService
+import com.junsu.sample.section.list.paged.network.api.ItemService
 import kotlinx.coroutines.*
 import timber.log.Timber
 import java.util.*

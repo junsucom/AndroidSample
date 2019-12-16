@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.junsu.sample.sector.home.HomeFragment"
+        android:name="com.junsu.sample.section.home.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_list_paged_room"
-        android:name="com.junsu.sample.sector.list.paged.room.RoomPagedListFragment"
+        android:name="com.junsu.sample.section.list.paged.room.RoomPagedListFragment"
         android:label="@string/menu_list_paged_room"
         tools:layout="@layout/fragment_list_paged_room" />
 
     <fragment
         android:id="@+id/nav_list_paged_network"
-        android:name="com.junsu.sample.sector.list.paged.network.NetworkPagedListFragment"
+        android:name="com.junsu.sample.section.list.paged.network.NetworkPagedListFragment"
         android:label="@string/menu_list_paged_network"
         tools:layout="@layout/fragment_list_paged_network" />
 </navigation>

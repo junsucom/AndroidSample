@@ -6,7 +6,7 @@
     <data>
         <variable
             name="vm"
-            type="com.junsu.sample.sector.home.HomeViewModel" />
+            type="com.junsu.sample.section.home.HomeViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

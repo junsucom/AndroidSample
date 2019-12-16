@@ -1,4 +1,4 @@
-package com.junsu.sample.sector.list.paged.network
+package com.junsu.sample.section.list.paged.network
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -8,7 +8,7 @@ import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.junsu.sample.Define.PAGE_SIZE
 import com.junsu.sample.model.Item
-import com.junsu.sample.sector.list.paged.network.api.ItemService
+import com.junsu.sample.section.list.paged.network.api.ItemService
 
 class NetworkPagedListViewModel(private val itemService: ItemService) : ViewModel() {
     private val itemDataSourceFactory = NetworkItemDataSourceFactory(itemService, viewModelScope)
