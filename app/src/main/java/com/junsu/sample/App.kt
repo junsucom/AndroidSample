@@ -6,6 +6,7 @@ import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 import com.facebook.stetho.Stetho
 import com.junsu.sample.di.appModule
+import timber.log.Timber
 
 
 class App : Application() {
@@ -16,6 +17,7 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         instance = this
+        Timber.plant(Timber.DebugTree())
         Stetho.initializeWithDefaults(this)
         SharedData.init(applicationContext)
 

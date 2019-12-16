@@ -1,4 +1,4 @@
-package com.junsu.sample.ui.list.paged.room
+package com.junsu.sample.sector.list.paged.room
 
 import androidx.lifecycle.*
 import androidx.paging.LivePagedListBuilder
@@ -10,18 +10,17 @@ import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
-class RoomPagedListViewModel(private val chatDao: ItemDao) :
+class RoomPagedListViewModel(private val itemDao: ItemDao) :
     ViewModel() {
     val message = MutableLiveData<String>("")
     val error = MutableLiveData<String>("")
     val itemList: LiveData<PagedList<Item>> by lazy {
-        val dataSourceFactory = chatDao.getByDate()
+        val dataSourceFactory = itemDao.getByDate()
         val config = PagedList.Config.Builder()
             .setPageSize(PAGE_SIZE)
             .build()
         LivePagedListBuilder(dataSourceFactory, config).build()
     }
-
 
     private val errorHandler = CoroutineExceptionHandler { _, exception ->
         Timber.e(exception)

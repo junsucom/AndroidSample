@@ -6,7 +6,7 @@
     <data>
         <variable
             name="vm"
-            type="com.junsu.sample.ui.list.paged.room.RoomPagedListViewModel" />
+            type="com.junsu.sample.sector.list.paged.room.RoomPagedListViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,6 +18,7 @@
             android:id="@+id/view_simpleList_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

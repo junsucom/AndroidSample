@@ -10,6 +10,8 @@ import java.util.*
 @Entity(tableName = Define.TABLE_ITEM)
 data class Item(
     @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id") val id: Long = 0,
+    @ColumnInfo(name = "type") val type: ItemType,
+    @ColumnInfo(name = "title") val title: String,
     @ColumnInfo(name = "message") val message: String,
     @ColumnInfo(name = "date") val date: Calendar = Calendar.getInstance(),
     @ColumnInfo(typeAffinity = ColumnInfo.BLOB) val image: ByteArray? = null

@@ -1,10 +1,11 @@
-package com.junsu.sample.ui.list.paged.room
+package com.junsu.sample.sector.list.paged.room
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
+import com.bumptech.glide.Glide
 import com.junsu.base.BindingViewHolder
 import com.junsu.sample.R
 import com.junsu.sample.databinding.CellItemBinding
@@ -58,8 +59,9 @@ internal class ItemAdapter : PagedListAdapter<Item, ItemAdapter.ItemViewHolder>(
         override fun bindTo(data: Item) {
             binding.item = data
             binding.setClickListener {
-                Timber.d("id:${binding.item.id}")
+                Timber.d("id:${binding.item?.id}")
             }
+            Glide.with(binding.viewCellItemImage).load(data.image).into(binding.viewCellItemImage)
         }
 
         override fun clear() {
@@ -67,7 +69,3 @@ internal class ItemAdapter : PagedListAdapter<Item, ItemAdapter.ItemViewHolder>(
         }
     }
 }
-
-
-
-
