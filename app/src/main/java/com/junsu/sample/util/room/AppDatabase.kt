@@ -25,38 +25,49 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun itemDao(): ItemDao
 
     companion object {
-        @Volatile private var instance: AppDatabase? = null
+        @Volatile
+        private var instance: AppDatabase? = null
 
         fun getInstance(context: Context): AppDatabase {
             return instance ?: synchronized(this) {
-                instance ?: buildDatabase(context).also { instance = it }
+                instance
+                    ?: buildDatabase(
+                        context
+                    )
+                        .also { instance = it }
             }
         }
 
         private fun buildDatabase(context: Context): AppDatabase {
             return Room.databaseBuilder(context, AppDatabase::class.java, DATABASE_NAME)
-                    .addCallback(object : RoomDatabase.Callback(){
-                        override fun onCreate(db: SupportSQLiteDatabase) {
-                            super.onCreate(db)
-                            CoroutineScope(Dispatchers.IO).launch {
-                                val dao = getInstance(context).itemDao()
-                                for(index in 0 .. 1000) {
-                                    val now = Date(Date().time  - index)
-                                    val item = Item(
-                                        type = ItemType.TypeA,
-                                        title = "title $index",
-                                        message = "message $index",
-                                        date = Calendar.getInstance().also {
-                                            it.time = now
-                                        },
-                                        image = Bitmap.createBitmap(120.px, 120.px, Bitmap.Config.ARGB_8888).fillColor().toByteArray()
-                                    )
-                                    dao.insert(item)
-                                }
+                .addCallback(object : RoomDatabase.Callback() {
+                    override fun onCreate(db: SupportSQLiteDatabase) {
+                        super.onCreate(db)
+                        CoroutineScope(Dispatchers.IO).launch {
+                            val dao = getInstance(
+                                context
+                            ).itemDao()
+                            for (index in 0..1000) {
+                                val now = Date(Date().time - index)
+                                val item = Item(
+                                    type = ItemType.TypeA,
+                                    title = "title $index",
+                                    message = "message $index",
+                                    date = Calendar.getInstance().also {
+                                        it.time = now
+                                    },
+                                    image = Bitmap.createBitmap(
+                                        120.px,
+                                        120.px,
+                                        Bitmap.Config.ARGB_8888
+                                    ).fillColor().toByteArray()
+                                )
+                                dao.insert(item)
                             }
                         }
-                    })
-                    .build()
+                    }
+                })
+                .build()
         }
     }
 }

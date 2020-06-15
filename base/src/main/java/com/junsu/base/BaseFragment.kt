@@ -27,10 +27,12 @@ abstract class BaseFragment<T : ViewDataBinding>: Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewContainer = container
-        bind = DataBindingUtil.inflate(inflater, getLayoutResId(), container, false)
-        bind.lifecycleOwner = viewLifecycleOwner
-        initFragment()
+        if(viewContainer != container) {
+            viewContainer = container
+            bind = DataBindingUtil.inflate(inflater, getLayoutResId(), container, false)
+            bind.lifecycleOwner = viewLifecycleOwner
+            initFragment()
+        }
         return bind.root
     }
 

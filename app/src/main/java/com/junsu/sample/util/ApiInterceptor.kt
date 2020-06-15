@@ -8,7 +8,7 @@ import com.junsu.base.extension.toByteArray
 import com.junsu.sample.Define
 import com.junsu.sample.model.Item
 import com.junsu.sample.model.ItemType
-import com.junsu.sample.section.list.paged.network.api.ItemResponse
+import com.junsu.sample.ui.list.paged.network.api.ItemResponse
 import okhttp3.Interceptor
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
@@ -35,12 +35,18 @@ private class ItemDummyInterceptor : Interceptor {
                     date = Calendar.getInstance().also {
                         it.time = now
                     },
-                    image = Bitmap.createBitmap(120.px, 120.px, Bitmap.Config.ARGB_8888).fillColor().toByteArray()
+                    image = Bitmap.createBitmap(120.px, 120.px, Bitmap.Config.ARGB_8888).fillColor()
+                        .toByteArray()
                 )
                 it.add(item)
             }
         }
-        return Gson().toJson(ItemResponse(fakeNotification, startIndex))
+        return Gson().toJson(
+            ItemResponse(
+                fakeNotification,
+                startIndex
+            )
+        )
     }
 
 

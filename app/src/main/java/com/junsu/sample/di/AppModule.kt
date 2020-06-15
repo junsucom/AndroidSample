@@ -1,11 +1,11 @@
 package com.junsu.sample.di
 
+import com.junsu.sample.ui.list.paged.network.NetworkPagedListViewModel
 import com.google.gson.GsonBuilder
 import com.junsu.sample.Define
-import com.junsu.sample.section.home.HomeViewModel
-import com.junsu.sample.section.list.paged.network.NetworkPagedListViewModel
-import com.junsu.sample.section.list.paged.network.api.ItemService
-import com.junsu.sample.section.list.paged.room.RoomPagedListViewModel
+import com.junsu.sample.ui.main.MainViewModel
+import com.junsu.sample.ui.list.paged.network.api.ItemService
+import com.junsu.sample.ui.list.paged.room.RoomPagedListViewModel
 import com.junsu.sample.util.apiInterceptor
 import com.junsu.sample.util.room.AppDatabase
 import org.koin.android.ext.koin.androidContext
@@ -26,7 +26,11 @@ val appModule = module {
             }
             .build().create(ItemService::class.java)
     }
-    viewModel { HomeViewModel() }
+    viewModel { MainViewModel() }
     viewModel { RoomPagedListViewModel(get()) }
-    viewModel { NetworkPagedListViewModel(get()) }
+    viewModel {
+        NetworkPagedListViewModel(
+            get()
+        )
+    }
 }

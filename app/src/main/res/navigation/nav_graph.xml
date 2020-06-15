@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/MainFragment">
+
+    <fragment
+        android:id="@+id/MainFragment"
+        android:name="com.junsu.sample.ui.main.MainFragment"
+        android:label="MainFragment"
+        tools:layout="@layout/fragment_main">
+
+        <action
+            android:id="@+id/actionBlankFragment"
+            app:destination="@id/BlankFragment" />
+
+        <action
+            android:id="@+id/actionNetworkPagedListFragment"
+            app:destination="@id/NetworkPagedListFragment" />
+
+        <action
+            android:id="@+id/actionRoomPagedListFragment"
+            app:destination="@id/RoomPagedListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/BlankFragment"
+        android:name="com.junsu.sample.ui.blank.BlankFragment"
+        android:label="BlankFragment"
+        tools:layout="@layout/fragment_blank">
+    </fragment>
+    <fragment
+        android:id="@+id/NetworkPagedListFragment"
+        android:name="com.junsu.sample.ui.list.paged.network.NetworkPagedListFragment"
+        android:label="NetworkPagedListFragment"
+        tools:layout="@layout/fragment_list_paged_network">
+    </fragment>
+    <fragment
+        android:id="@+id/RoomPagedListFragment"
+        android:name="com.junsu.sample.ui.list.paged.room.RoomPagedListFragment"
+        android:label="RoomPagedListFragment"
+        tools:layout="@layout/fragment_list_paged_room">
+    </fragment>
+</navigation>

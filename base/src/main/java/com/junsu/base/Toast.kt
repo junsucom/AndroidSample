@@ -17,7 +17,11 @@ object Toast {
 
     fun show(context: Context?, msg: String, duration: Int = LENGTH_SHORT) {
         context?.let {
-            toast?.setText(msg) ?: makeText(it, msg, duration)
+            toast?.setText(msg) ?: makeText(
+                it,
+                msg,
+                duration
+            )
             toast?.show()
         }
     }
