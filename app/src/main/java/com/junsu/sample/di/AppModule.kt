@@ -1,36 +1,40 @@
 package com.junsu.sample.di
 
-import com.junsu.sample.ui.list.paged.network.NetworkPagedListViewModel
+import android.content.Context
 import com.google.gson.GsonBuilder
 import com.junsu.sample.Define
-import com.junsu.sample.ui.main.MainViewModel
+import com.junsu.sample.model.ItemDao
 import com.junsu.sample.ui.list.paged.network.api.ItemService
-import com.junsu.sample.ui.list.paged.room.RoomPagedListViewModel
 import com.junsu.sample.util.apiInterceptor
 import com.junsu.sample.util.room.AppDatabase
-import org.koin.android.ext.koin.androidContext
-import org.koin.androidx.viewmodel.dsl.viewModel
-import org.koin.dsl.module
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
+import dagger.hilt.android.qualifiers.ApplicationContext
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Singleton
 
-val appModule = module {
+@Module
+@InstallIn(ApplicationComponent::class)
+object AppModule {
 
-    single { AppDatabase.getInstance(androidContext()).itemDao() }
-    single {
-        Retrofit.Builder()
+    @Singleton
+    @Provides
+    fun provideItemDao(@ApplicationContext context: Context): ItemDao {
+        return AppDatabase.getInstance(context).itemDao()
+    }
+
+    @Singleton
+    @Provides
+    fun provideItemService(@ApplicationContext context: Context): ItemService {
+        return Retrofit.Builder()
             .baseUrl(Define.URL_HOST)
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
             .apply {
                 client(apiInterceptor)
             }
             .build().create(ItemService::class.java)
-    }
-    viewModel { MainViewModel() }
-    viewModel { RoomPagedListViewModel(get()) }
-    viewModel {
-        NetworkPagedListViewModel(
-            get()
-        )
     }
 }

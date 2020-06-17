@@ -4,6 +4,7 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: "androidx.navigation.safeargs.kotlin"
 apply plugin: 'org.jetbrains.kotlin.android.extensions'
+apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     compileSdkVersion 29
@@ -98,9 +99,14 @@ dependencies {
 
 
     // dependency injection - koin
-    implementation "org.koin:koin-android:$koinVersion"
-    implementation "org.koin:koin-androidx-scope:$koinVersion"
-    implementation "org.koin:koin-androidx-viewmodel:$koinVersion"
+//    implementation "org.koin:koin-android:$koinVersion"
+//    implementation "org.koin:koin-androidx-scope:$koinVersion"
+//    implementation "org.koin:koin-androidx-viewmodel:$koinVersion"
+    // dependency injection - Hilt
+    implementation "com.google.dagger:hilt-android:$hiltVersion"
+    kapt "com.google.dagger:hilt-android-compiler:$hiltVersion"
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hiltAndroidXVersion"
+    kapt "androidx.hilt:hilt-compiler:$hiltAndroidXVersion"
 
     //Gson
     implementation "com.google.code.gson:gson:$gsonVersion"

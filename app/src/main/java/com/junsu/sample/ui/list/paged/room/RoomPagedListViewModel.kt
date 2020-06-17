@@ -1,5 +1,6 @@
 package com.junsu.sample.ui.list.paged.room
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
@@ -10,7 +11,7 @@ import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
-class RoomPagedListViewModel(private val itemDao: ItemDao) :
+class RoomPagedListViewModel @ViewModelInject constructor(private val itemDao: ItemDao) :
     ViewModel() {
     private val message = MutableLiveData<String>("")
     private val error = MutableLiveData<String>("")
