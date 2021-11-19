@@ -31,27 +31,27 @@ abstract class SharedPreferenceUtil(val name: String) {
         listeners.forEach { it.onSharedPrefChanged(property) }
     }
 
-    inner class StringPrefDelegate(private val prefKey: String?, private val defaultValue: String?) {
+    inner class StringPrefDelegate(private val prefKey: String?, private val defaultValue: String = "") {
         operator fun getValue(thisRef: Any?, property: KProperty<*>) =
-            prefs.getString(prefKey ?: property.name, defaultValue)
+            prefs.getString(prefKey ?: property.name, defaultValue)?: defaultValue
 
         operator fun setValue(thisRef: Any?, property: KProperty<*>, value: String?) {
             prefs.edit().putString(prefKey ?: property.name, value).apply()
             onPrefChanged(property)
         }
     }
-    fun stringPref(prefKey: String, defaultValue: String? = null) = StringPrefDelegate(prefKey, defaultValue)
+    fun stringPref(prefKey: String, defaultValue: String) = StringPrefDelegate(prefKey, defaultValue)
 
-    inner class StringSetPrefDelegate(private val prefKey: String?, private val defaultValue: Set<String>?) {
-        operator fun getValue(thisRef: Any?, property: KProperty<*>) : Set<String>? =
-            prefs.getStringSet(prefKey ?: property.name, defaultValue)
+    inner class StringSetPrefDelegate(private val prefKey: String?, private val defaultValue: Set<String>) {
+        operator fun getValue(thisRef: Any?, property: KProperty<*>) : Set<String> =
+            prefs.getStringSet(prefKey ?: property.name, defaultValue)?: defaultValue
 
         operator fun setValue(thisRef: Any?, property: KProperty<*>, value: Set<String>?) {
             prefs.edit().putStringSet(prefKey ?: property.name, value).apply()
             onPrefChanged(property)
         }
     }
-    fun stringSetPref(prefKey: String, defaultValue: Set<String>?) = StringSetPrefDelegate(prefKey, defaultValue)
+    fun stringSetPref(prefKey: String, defaultValue: Set<String>) = StringSetPrefDelegate(prefKey, defaultValue)
 
     abstract class PrefDelegate<T>(val prefKey: String?) {
         abstract operator fun getValue(thisRef: Any?, property: KProperty<*>): T?

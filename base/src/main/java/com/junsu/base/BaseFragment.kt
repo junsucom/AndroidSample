@@ -16,35 +16,38 @@ import androidx.fragment.app.Fragment
 abstract class BaseFragment<T : ViewDataBinding>: Fragment() {
     lateinit var bind:T
 
-    private var viewContainer: ViewGroup? = null
-
     @LayoutRes
     abstract fun getLayoutResId(): Int
 
     abstract fun initFragment()
+    protected var rootView: View? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        if(viewContainer != container) {
-            viewContainer = container
-            bind = DataBindingUtil.inflate(inflater, getLayoutResId(), container, false)
-            bind.lifecycleOwner = viewLifecycleOwner
-            initFragment()
-        }
+        bind = DataBindingUtil.inflate(inflater, getLayoutResId(), container, false)
+        bind.lifecycleOwner = viewLifecycleOwner
+        rootView = bind.root
+        initFragment()
         return bind.root
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         bind.unbind()
+        hideKeyboard()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        hideKeyboard()
     }
 
     fun hideKeyboard() {
         val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        viewContainer?.run {
-            imm.hideSoftInputFromWindow(this.windowToken, 0)
+        bind.root?.also {
+            imm.hideSoftInputFromWindow(it.windowToken, 0)
         }
     }
 
