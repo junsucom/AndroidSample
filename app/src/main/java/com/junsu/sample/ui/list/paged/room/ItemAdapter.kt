@@ -3,7 +3,7 @@ package com.junsu.sample.ui.list.paged.room
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.paging.PagedListAdapter
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import com.bumptech.glide.Glide
 import com.junsu.base.BindingViewHolder
@@ -12,9 +12,7 @@ import com.junsu.sample.model.Item
 import com.junsu.sample.R
 import timber.log.Timber
 
-internal class ItemAdapter : PagedListAdapter<Item, ItemAdapter.ItemViewHolder>(
-    DIFF_CALLBACK
-) {
+internal class ItemAdapter : PagingDataAdapter<Item, ItemAdapter.ItemViewHolder>(DIFF_CALLBACK) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         return ItemViewHolder(
             LayoutInflater.from(parent.context)

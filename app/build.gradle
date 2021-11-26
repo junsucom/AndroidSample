@@ -1,32 +1,30 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
-apply plugin: "androidx.navigation.safeargs.kotlin"
-apply plugin: 'org.jetbrains.kotlin.android.extensions'
-apply plugin: 'dagger.hilt.android.plugin'
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'dagger.hilt.android.plugin'
+}
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
-    buildToolsVersion rootProject.buildToolsVersion
 
     defaultConfig {
         applicationId "com.junsu.sample"
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.targetSdkVersion
         versionCode 1
-        versionName "1.0"
+        versionName "0.1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
             minifyEnabled true
-            manifestPlaceholders = [crashlyticsEnabled: true]
         }
         debug {
             minifyEnabled false
-            manifestPlaceholders = [crashlyticsEnabled: false]
         }
     }
     compileOptions {
@@ -36,11 +34,9 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    androidExtensions {
-        experimental = true
-    }
-    dataBinding {
-        enabled = true
+    buildFeatures{
+        dataBinding true
+        viewBinding true
     }
 }
 
@@ -48,77 +44,57 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(path: ':base')
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}"
-    implementation "androidx.appcompat:appcompat:${appCompatVersion}"
-    implementation "androidx.core:core-ktx:${coreKtxVersion}"
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation "androidx.appcompat:appcompat:$appCompatVersion"
+    implementation "androidx.core:core-ktx:$coreKtxVersion"
+    implementation "androidx.collection:collection-ktx:1.1.0"
+    implementation "androidx.fragment:fragment-ktx:1.4.0"
+    implementation "androidx.activity:activity-ktx:1.4.0"
+
     implementation "com.google.android.material:material:${materialVersion}"
-    implementation "androidx.constraintlayout:constraintlayout:${constraintlayoutVersion}"
-    implementation "androidx.collection:collection-ktx:${collectionKtxVersion}"
-    implementation "androidx.fragment:fragment-ktx:${fragmentKtxVersion}"
-    implementation "androidx.activity:activity-ktx:${activityKtxVersion}"
-    implementation 'androidx.preference:preference:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0'
+
+    implementation "androidx.collection:collection-ktx:1.1.0"
+    implementation "androidx.fragment:fragment-ktx:1.4.0"
+    implementation "androidx.activity:activity-ktx:1.4.0"
+
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0'
 
     //Glide
-    implementation "com.github.bumptech.glide:glide:${glideVersion}"
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.2.1'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.2.1'
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
-    kapt "com.github.bumptech.glide:compiler:${glideVersion}"
-
-    // Lifecycle components
-//    implementation "androidx.lifecycle:lifecycle-extensions-ktx:$lifecycleVersion"
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion"
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
-
-    // Coroutines
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
-
-
-    // navigation
-    implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
-    implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    kapt "com.github.bumptech.glide:compiler:4.7.1"
 
     //room
-    implementation "androidx.room:room-runtime:$roomVersion"
-    implementation "androidx.room:room-ktx:$roomVersion"
-    kapt "androidx.room:room-compiler:$roomVersion"
+    def room_version = "2.3.0"
+    implementation "androidx.room:room-ktx:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
 
-    implementation "androidx.paging:paging-runtime:$pagingVersion"
-    // For Kotlin use paging-runtime-ktx
-    testImplementation "androidx.paging:paging-common:$pagingVersion"
-    // For Kotlin use paging-common-ktx
+    //paging
+    def paging_version = "3.1.0"
+    implementation "androidx.paging:paging-runtime-ktx:$paging_version"
+    testImplementation "androidx.paging:paging-common-ktx:$paging_version"
 
-
-    // dependency injection - koin
-//    implementation "org.koin:koin-android:$koinVersion"
-//    implementation "org.koin:koin-androidx-scope:$koinVersion"
-//    implementation "org.koin:koin-androidx-viewmodel:$koinVersion"
     // dependency injection - Hilt
     implementation "com.google.dagger:hilt-android:$hiltVersion"
     kapt "com.google.dagger:hilt-android-compiler:$hiltVersion"
-    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hiltAndroidXVersion"
-    kapt "androidx.hilt:hilt-compiler:$hiltAndroidXVersion"
-
-    //Gson
-    implementation "com.google.code.gson:gson:$gsonVersion"
 
     //Retrofit
-    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
-    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
-    implementation 'com.squareup.okhttp3:logging-interceptor:4.2.2'
+    implementation "com.squareup.retrofit2:retrofit:2.9.0"
+    implementation "com.squareup.retrofit2:converter-gson:2.6.2"
+    implementation 'com.squareup.retrofit2:converter-scalars:2.9.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.9.3'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.1'
+    implementation 'com.squareup.okhttp3:okhttp-urlconnection:4.9.3'
+//    implementation(platform("com.squareup.okhttp3:okhttp-bom:4.9.3"))
 
-    //firebase
-
-    //logger
-    implementation "com.jakewharton.timber:timber:$timberVersion"
-
-    //Util
-    implementation "com.facebook.stetho:stetho:$stethoVersion"
-    implementation "com.facebook.stetho:stetho-okhttp3:$stethoVersion"
+    //Utils
+    implementation "com.jakewharton.timber:timber:4.7.1"
+    implementation 'com.facebook.stetho:stetho:1.6.0'
+    implementation "com.facebook.stetho:stetho-okhttp3:1.6.0"
 
     //test
     testImplementation "junit:junit:$junitVersion"

@@ -9,11 +9,8 @@ import com.junsu.sample.Define
 import com.junsu.sample.model.Item
 import com.junsu.sample.model.ItemType
 import com.junsu.sample.ui.list.paged.network.api.ItemResponse
-import okhttp3.Interceptor
+import okhttp3.*
 import okhttp3.MediaType.Companion.toMediaType
-import okhttp3.OkHttpClient
-import okhttp3.Protocol
-import okhttp3.Response
 import okhttp3.ResponseBody.Companion.toResponseBody
 import okhttp3.logging.HttpLoggingInterceptor
 import java.util.*

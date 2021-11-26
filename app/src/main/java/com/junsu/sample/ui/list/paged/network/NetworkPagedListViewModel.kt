@@ -1,30 +1,25 @@
 package com.junsu.sample.ui.list.paged.network
 
-import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.paging.LivePagedListBuilder
-import androidx.paging.PagedList
-import com.junsu.sample.Define.PAGE_SIZE
-import com.junsu.sample.model.Item
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.cachedIn
 import com.junsu.sample.ui.list.paged.network.api.ItemService
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class NetworkPagedListViewModel @ViewModelInject constructor(private val itemService: ItemService) : ViewModel() {
-    private val itemDataSourceFactory =
-        NetworkItemDataSourceFactory(
-            itemService,
-            viewModelScope
-        )
+@HiltViewModel
+class NetworkPagedListViewModel @Inject constructor(private val itemService: ItemService) : ViewModel() {
 
     val message = MutableLiveData<String>("")
     val error = MutableLiveData<String>("")
-    val itemList: LiveData<PagedList<Item>> by lazy {
-        val dataSourceFactory = itemDataSourceFactory
-        val config = PagedList.Config.Builder()
-            .setPageSize(PAGE_SIZE)
-            .build()
-        LivePagedListBuilder(dataSourceFactory, config).build()
-    }
+    val flow = Pager(
+        // Configure how data is loaded by passing additional properties to
+        // PagingConfig, such as prefetchDistance.
+        PagingConfig(pageSize = 20)
+    ) {
+        NetworkItemDataSource(itemService)
+    }.flow.cachedIn(viewModelScope)
 }

@@ -13,7 +13,7 @@ object Define {
 
     val DATE_FORMAT = SimpleDateFormat("MM월dd일 aa hh:mm", Locale.KOREA)
 
-    const val URL_HOST = "http://example.com//"
+    const val URL_HOST = "https://gorest.co.in/"
     const val URL_GET_ITEM = "dummy/items"
     const val PARAM_GET_ITEM_START_INDEX = "startIndex"
     const val PARAM_GET_ITEM_COUNT = "count"
