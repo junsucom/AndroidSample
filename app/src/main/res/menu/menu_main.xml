@@ -22,4 +22,8 @@
             </group>
         </menu>
     </item>
+    <item
+        android:id="@+id/menu_action_notification"
+        android:orderInCategory="300"
+        android:title="@string/menu_notification"/>
 </menu>

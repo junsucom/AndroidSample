@@ -25,7 +25,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <receiver android:name=".receiver.BootReceiver"
+        <receiver android:name=".receiver.AppReceiver"
             android:enabled="true"
             android:exported="false">
             <intent-filter>

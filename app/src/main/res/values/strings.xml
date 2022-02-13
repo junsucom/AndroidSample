@@ -10,4 +10,12 @@
     <string name="menu_list">List</string>
     <string name="menu_list_paged_room">PagedRoom</string>
     <string name="menu_list_paged_network">PagedNetwork</string>
+    <string name="menu_notification">Notification</string>
+
+    <string name="notification_channel_id" translatable="false">sample_channel_id</string>
+    <string name="notification_channel_name" translatable="false">Sample Notification</string>
+    <string name="notification_channel_description">Sample Notification Description</string>
+    <string name="notification_title">Sample Title</string>
+    <string name="notification_message">Sample Message</string>
+    <string name="snooze">Snooze</string>
 </resources>

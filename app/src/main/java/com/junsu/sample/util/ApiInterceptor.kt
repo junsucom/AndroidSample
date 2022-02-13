@@ -13,6 +13,7 @@ import okhttp3.*
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.ResponseBody.Companion.toResponseBody
 import okhttp3.logging.HttpLoggingInterceptor
+import timber.log.Timber
 import java.util.*
 
 
@@ -46,12 +47,11 @@ private class ItemDummyInterceptor : Interceptor {
         )
     }
 
-
     override fun intercept(chain: Interceptor.Chain): Response {
-
         return if (chain.request().url.toString().contains(Define.URL_GET_ITEM)) {
             val startIndex = chain.request().url.queryParameter(Define.PARAM_GET_ITEM_START_INDEX)?.toLong()?:0
             val count = chain.request().url.queryParameter(Define.PARAM_GET_ITEM_COUNT)?.toInt()?:0
+            Timber.d("intercept startIndex:$startIndex, count:$count")
             val responseString = makeFakeResponse(startIndex, count)
             Response.Builder()
                 .code(200)

@@ -37,6 +37,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>() {
             R.id.menu_action_blank -> MainFragmentDirections.actionBlankFragment()
             R.id.menu_action_list_paged_network -> MainFragmentDirections.actionNetworkPagedListFragment()
             R.id.menu_action_list_paged_room -> MainFragmentDirections.actionRoomPagedListFragment()
+            R.id.menu_action_notification -> MainFragmentDirections.actionNotificationFragment()
             else -> null
         }?.also {
             findNavController().navigate(it)

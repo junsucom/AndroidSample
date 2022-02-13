@@ -22,6 +22,10 @@
         <action
             android:id="@+id/actionRoomPagedListFragment"
             app:destination="@id/RoomPagedListFragment" />
+
+        <action
+            android:id="@+id/actionNotificationFragment"
+            app:destination="@id/NotificationFragment" />
     </fragment>
     <fragment
         android:id="@+id/BlankFragment"
@@ -40,5 +44,11 @@
         android:name="com.junsu.sample.ui.list.paged.room.RoomPagedListFragment"
         android:label="RoomPagedListFragment"
         tools:layout="@layout/fragment_list_paged_room">
+    </fragment>
+    <fragment
+        android:id="@+id/NotificationFragment"
+        android:name="com.junsu.sample.ui.notification.NotificationFragment"
+        android:label="NotificationFragment"
+        tools:layout="@layout/fragment_notification">
     </fragment>
 </navigation>
