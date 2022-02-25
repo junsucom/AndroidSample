@@ -1,9 +1,10 @@
-package com.junsu.sample
+package com.junsu.sample.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
+import com.junsu.sample.R
 import com.junsu.sample.service.BootWorker
 import dagger.hilt.android.AndroidEntryPoint
 

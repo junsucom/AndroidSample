@@ -26,6 +26,10 @@
         <action
             android:id="@+id/actionNotificationFragment"
             app:destination="@id/NotificationFragment" />
+
+        <action
+            android:id="@+id/actionLiveDataFragment"
+            app:destination="@id/LiveDataFragment" />
     </fragment>
     <fragment
         android:id="@+id/BlankFragment"
@@ -50,5 +54,11 @@
         android:name="com.junsu.sample.ui.notification.NotificationFragment"
         android:label="NotificationFragment"
         tools:layout="@layout/fragment_notification">
+    </fragment>
+    <fragment
+        android:id="@+id/LiveDataFragment"
+        android:name="com.junsu.sample.ui.liveData.LiveDataFragment"
+        android:label="LiveDataFragment"
+        tools:layout="@layout/fragment_live_data">
     </fragment>
 </navigation>

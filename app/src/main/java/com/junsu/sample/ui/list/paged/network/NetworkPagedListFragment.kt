@@ -4,18 +4,16 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.observe
-import com.junsu.base.BaseFragment
+import com.junsu.sample.ui.AppBaseFragment
 import com.junsu.sample.R
 import com.junsu.sample.databinding.FragmentListPagedNetworkBinding
 import com.junsu.sample.ui.list.paged.room.ItemAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 @AndroidEntryPoint
-class NetworkPagedListFragment : BaseFragment<FragmentListPagedNetworkBinding>() {
+class NetworkPagedListFragment : AppBaseFragment<FragmentListPagedNetworkBinding>() {
 
     private val viewModel by viewModels<NetworkPagedListViewModel>()
 

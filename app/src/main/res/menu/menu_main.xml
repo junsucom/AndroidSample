@@ -26,4 +26,8 @@
         android:id="@+id/menu_action_notification"
         android:orderInCategory="300"
         android:title="@string/menu_notification"/>
+    <item
+        android:id="@+id/menu_action_liveData"
+        android:orderInCategory="300"
+        android:title="@string/menu_liveData"/>
 </menu>

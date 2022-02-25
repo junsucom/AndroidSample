@@ -22,7 +22,7 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
 import androidx.core.app.NotificationCompat
-import com.junsu.sample.MainActivity
+import com.junsu.sample.ui.MainActivity
 import com.junsu.sample.R
 import com.junsu.sample.receiver.AppReceiver
 

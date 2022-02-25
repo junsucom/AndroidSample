@@ -1,14 +1,13 @@
 package com.junsu.sample.ui.blank
 
 import androidx.fragment.app.viewModels
-import com.junsu.base.BaseFragment
+import com.junsu.sample.ui.AppBaseFragment
 import com.junsu.sample.R
 import com.junsu.sample.databinding.FragmentBlankBinding
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
-class BlankFragment : BaseFragment<FragmentBlankBinding>() {
+class BlankFragment : AppBaseFragment<FragmentBlankBinding>() {
 
     private val viewModel by viewModels<BlankViewModel>()
 

@@ -5,14 +5,14 @@ import android.app.NotificationManager
 import android.graphics.Color
 import android.os.Build
 import androidx.fragment.app.viewModels
-import com.junsu.base.BaseFragment
+import com.junsu.sample.ui.AppBaseFragment
 import com.junsu.sample.R
 import com.junsu.sample.databinding.FragmentNotificationBinding
 import com.junsu.sample.ui.blank.NotificationViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class NotificationFragment : BaseFragment<FragmentNotificationBinding>() {
+class NotificationFragment : AppBaseFragment<FragmentNotificationBinding>() {
 
     private val viewModel by viewModels<NotificationViewModel>()
 
@@ -26,7 +26,6 @@ class NotificationFragment : BaseFragment<FragmentNotificationBinding>() {
                 val notificationChannel = NotificationChannel(
                     getString(R.string.notification_channel_id),
                     getString(R.string.notification_channel_name),
-                    // TODO: Step 2.4 change importance
                     NotificationManager.IMPORTANCE_HIGH
                 )
 
