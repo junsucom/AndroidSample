@@ -1,36 +1,17 @@
 buildscript {
-    ext {
-        compileSdkVersion = 31
-        minSdkVersion = 24
-        targetSdkVersion = 30
-        kotlinVersion = '1.5.31'
-        appCompatVersion = '1.4.0'
-        coreKtxVersion = '1.7.0'
-        materialVersion = '1.4.0'
-        coroutinesVersion = '1.4.1'
-        lifecycleRuntimeKtx = '2.3.1'
-        navigationVersion = '2.3.5'
-        hiltVersion = '2.37'
+    apply from: 'versions.gradle'
 
-        androidXTestExtKotlinRunnerVersion = '1.1.3'
-        androidXTestCoreVersion = '1.4.0'
-        robolectricVersion = '4.7.3'
-        junitVersion = '4.+'
-        espressoVersion = '3.4.0'
-        testExtJunitVersion = '1.1.4'
+    addRepos(repositories)
+    dependencies {
+        classpath deps.android_gradle_plugin
+        classpath deps.kotlin.plugin
+        classpath deps.navigation.safe_args_plugin
+        classpath deps.gms
+        classpath deps.firebase.crashlytics
+        classpath deps.hilt.gradle
     }
-
     repositories {
         google()
-        mavenCentral()
-    }
-    dependencies {
-        classpath "com.android.tools.build:gradle:7.0.3"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
-        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navigationVersion"
-        classpath 'com.google.gms:google-services:4.3.10'
-        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.8.0'
-        classpath "com.google.dagger:hilt-android-gradle-plugin:$hiltVersion"
     }
 }
 

@@ -8,12 +8,13 @@ plugins {
 }
 
 android {
-    compileSdkVersion rootProject.compileSdkVersion
+    compileSdkVersion build_versions.compile_sdk
+    buildToolsVersion build_versions.build_tools
 
     defaultConfig {
         applicationId "com.junsu.sample"
-        minSdkVersion rootProject.minSdkVersion
-        targetSdkVersion rootProject.targetSdkVersion
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
         versionCode 1
         versionName "0.1.0"
 
@@ -27,16 +28,15 @@ android {
             minifyEnabled false
         }
     }
+    buildFeatures{
+        dataBinding true
+    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
         jvmTarget = "1.8"
-    }
-    buildFeatures{
-        dataBinding true
-        viewBinding true
     }
     testOptions {
         unitTests.returnDefaultValues = true
@@ -47,71 +47,61 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(path: ':base')
 
-    implementation "androidx.appcompat:appcompat:$appCompatVersion"
-    implementation "androidx.core:core-ktx:$coreKtxVersion"
-    implementation "androidx.collection:collection-ktx:1.2.0"
-    implementation "androidx.fragment:fragment-ktx:1.4.0"
-    implementation "androidx.activity:activity-ktx:1.4.0"
+    implementation deps.app_compat
+    implementation deps.material
+    implementation deps.core_ktx
+    implementation deps.lifecycle.runtime
+    implementation deps.lifecycle.viewmodel_ktx
+    implementation deps.lifecycle.livedata_ktx
+    implementation deps.activity.activity_ktx
+    implementation deps.fragment.runtime_ktx
+    implementation deps.constraint_layout
+    implementation deps.lifecycle.livedata_ktx
+    implementation deps.lifecycle.viewmodel_ktx
 
-    implementation "com.google.android.material:material:${materialVersion}"
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.0'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0'
-
-    implementation "androidx.collection:collection-ktx:1.2.0"
-    implementation "androidx.fragment:fragment-ktx:1.4.0"
-    implementation "androidx.activity:activity-ktx:1.4.0"
-
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0'
+    //Navigation
+    implementation deps.navigation.runtime_ktx
+    implementation deps.navigation.fragment_ktx
+    implementation deps.navigation.ui_ktx
 
     //Work
-    def work_version = "2.7.1"
-    // Kotlin + coroutines
-    implementation "androidx.work:work-runtime-ktx:$work_version"
+    implementation deps.work.runtime_ktx
 
     //Glide
-    implementation 'com.github.bumptech.glide:glide:4.11.0'
-    kapt "com.github.bumptech.glide:compiler:4.7.1"
+    implementation deps.glide.runtime
+    implementation deps.glide.compiler
 
     //room
-    def room_version = "2.4.0"
-    implementation "androidx.room:room-ktx:$room_version"
-    implementation "androidx.room:room-paging:$room_version"
-    kapt "androidx.room:room-compiler:$room_version"
+    implementation deps.room.ktx
+    implementation deps.room.paging
+    kapt deps.room.compiler
 
     //paging
-    def paging_version = "3.1.0"
-    implementation "androidx.paging:paging-runtime-ktx:$paging_version"
-    testImplementation "androidx.paging:paging-common-ktx:$paging_version"
+    implementation deps.paging.runtime
+    testImplementation deps.paging.common
 
-    // dependency injection - Hilt
-    implementation "com.google.dagger:hilt-android:$hiltVersion"
-    kapt "com.google.dagger:hilt-android-compiler:$hiltVersion"
+    //Hilt
+    implementation deps.hilt.android
+    kapt deps.hilt.android_compiler
 
     //Retrofit
-    implementation "com.squareup.retrofit2:retrofit:2.9.0"
-    implementation "com.squareup.retrofit2:converter-gson:2.6.2"
-    implementation 'com.squareup.retrofit2:converter-scalars:2.9.0'
-    implementation 'com.squareup.okhttp3:okhttp:4.9.3'
-    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.1'
-    implementation 'com.squareup.okhttp3:okhttp-urlconnection:4.9.3'
-//    implementation(platform("com.squareup.okhttp3:okhttp-bom:4.9.3"))
+    implementation deps.retrofit.runtime
+    implementation deps.retrofit.gson
+    implementation deps.retrofit.scalars
+    implementation deps.okhttp.runtime
+    implementation deps.okhttp.logging_interceptor
+    implementation deps.okhttp.urlconnection
 
     //Utils
-    implementation "com.jakewharton.timber:timber:4.7.1"
-    implementation 'com.facebook.stetho:stetho:1.6.0'
-    implementation "com.facebook.stetho:stetho-okhttp3:1.6.0"
+    implementation deps.timber
 
     //test
-    testImplementation "android.arch.core:core-testing:1.1.1"
-    testImplementation "androidx.test.ext:junit-ktx:$androidXTestExtKotlinRunnerVersion"
-    testImplementation "androidx.test:core-ktx:$androidXTestCoreVersion"
-    testImplementation "org.robolectric:robolectric:$robolectricVersion"
-    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.0'
-    testImplementation "junit:junit:$junitVersion"
-    androidTestImplementation "androidx.test.ext:junit:$testExtJunitVersion"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
+    testImplementation deps.arch_core.testing
+    testImplementation deps.atsl.ext_junit_ktx
+    testImplementation deps.atsl.core_ktx
+    testImplementation deps.robolectric
+    testImplementation deps.coroutines.test
+    testImplementation deps.junit
+    androidTestImplementation deps.atsl.ext_junit_ktx
+    androidTestImplementation deps.espresso.core
 }
