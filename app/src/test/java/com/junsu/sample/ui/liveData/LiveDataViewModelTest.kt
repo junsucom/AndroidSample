@@ -12,6 +12,7 @@ import org.junit.Test
 class LiveDataViewModelTest {
     private lateinit var viewModel: LiveDataViewModel
 
+    // 각 작업을 동기적으로 실행
     @Rule
     @JvmField
     val instantExecutorRule = InstantTaskExecutorRule()

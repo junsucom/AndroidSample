@@ -12,12 +12,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class NetworkPagedListViewModel @Inject constructor(private val itemService: ItemService) : ViewModel() {
-
-    val message = MutableLiveData<String>("")
-    val error = MutableLiveData<String>("")
     val flow = Pager(
-        // Configure how data is loaded by passing additional properties to
-        // PagingConfig, such as prefetchDistance.
         PagingConfig(pageSize = 20)
     ) {
         NetworkItemDataSource(itemService)

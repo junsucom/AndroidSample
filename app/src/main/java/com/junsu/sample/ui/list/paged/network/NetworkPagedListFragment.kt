@@ -21,7 +21,6 @@ class NetworkPagedListFragment : AppBaseFragment<FragmentListPagedNetworkBinding
 
     override fun initFragment() {
         activity?.title = getString(R.string.menu_list_paged_network)
-        bind.vm = viewModel
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

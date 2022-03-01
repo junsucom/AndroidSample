@@ -28,7 +28,7 @@ android {
             minifyEnabled false
         }
     }
-    buildFeatures{
+    buildFeatures {
         dataBinding true
     }
     compileOptions {
@@ -40,6 +40,12 @@ android {
     }
     testOptions {
         unitTests.returnDefaultValues = true
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+    hilt {
+        enableTransformForLocalTests = true
     }
 }
 
@@ -69,7 +75,7 @@ dependencies {
 
     //Glide
     implementation deps.glide.runtime
-    implementation deps.glide.compiler
+    kapt deps.glide.compiler
 
     //room
     implementation deps.room.ktx
@@ -95,13 +101,34 @@ dependencies {
     //Utils
     implementation deps.timber
 
+    // "androidx.fragment:fragment-testing" must be scoped to all sourcesets.
+    implementation(deps.fragment.testing)
+
     //test
     testImplementation deps.arch_core.testing
     testImplementation deps.atsl.ext_junit_ktx
     testImplementation deps.atsl.core_ktx
     testImplementation deps.robolectric
     testImplementation deps.coroutines.test
+    testImplementation deps.espresso.core
+    testImplementation deps.espresso.contrib
+    testImplementation deps.espresso.intents
+    testImplementation deps.navigation.testing
+    testImplementation deps.truth
     testImplementation deps.junit
-    androidTestImplementation deps.atsl.ext_junit_ktx
+    // For Robolectric tests.
+    testImplementation 'com.google.dagger:hilt-android-testing:2.37'
+    // ...with Kotlin.
+    kaptTest 'com.google.dagger:hilt-android-compiler:2.37'
+
+    androidTestImplementation deps.atsl.core_ktx
+    androidTestImplementation deps.atsl.ext_junit
+    androidTestImplementation deps.atsl.runner
+    androidTestImplementation deps.atsl.rules
+    androidTestImplementation deps.coroutines.test
+    androidTestImplementation deps.navigation.testing
+    androidTestImplementation deps.truth
     androidTestImplementation deps.espresso.core
+    androidTestImplementation deps.espresso.contrib
+    androidTestImplementation deps.espresso.intents
 }
