@@ -1,6 +1,5 @@
 package com.junsu.sample.ui.list.paged.network
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager

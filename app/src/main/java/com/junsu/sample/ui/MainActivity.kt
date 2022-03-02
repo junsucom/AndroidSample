@@ -15,8 +15,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //Worker Start
-        BootWorker.start(applicationContext, "Started by MainActivity")
+        try {
+            //Worker Start
+            BootWorker.start(applicationContext, "Started by MainActivity")
+        } catch (e: IllegalStateException) {
+//            e.printStackTrace()
+        }
 
         findViewById<FloatingActionButton>(R.id.fab).setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)

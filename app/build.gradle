@@ -39,8 +39,8 @@ android {
         jvmTarget = "1.8"
     }
     testOptions {
-        unitTests.returnDefaultValues = true
         unitTests {
+            returnDefaultValues = true
             includeAndroidResources = true
         }
     }
@@ -89,6 +89,7 @@ dependencies {
     //Hilt
     implementation deps.hilt.android
     kapt deps.hilt.android_compiler
+    implementation deps.hilt.work
 
     //Retrofit
     implementation deps.retrofit.runtime
@@ -117,9 +118,9 @@ dependencies {
     testImplementation deps.truth
     testImplementation deps.junit
     // For Robolectric tests.
-    testImplementation 'com.google.dagger:hilt-android-testing:2.37'
+    testImplementation deps.hilt.android_test
     // ...with Kotlin.
-    kaptTest 'com.google.dagger:hilt-android-compiler:2.37'
+    kaptTest deps.hilt.android_compiler
 
     androidTestImplementation deps.atsl.core_ktx
     androidTestImplementation deps.atsl.ext_junit
