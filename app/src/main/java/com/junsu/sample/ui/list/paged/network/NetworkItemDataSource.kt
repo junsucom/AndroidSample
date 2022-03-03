@@ -16,7 +16,7 @@ class NetworkItemDataSource (
         return try {
             // Start refresh at page 1 if undefined.
             val nextPageNumber = params.key ?: 1
-            val response:List<Item> = itemService.getItems(nextPageNumber, PAGE_SIZE).items?: listOf()
+            val response:List<Item> = itemService.getItems((nextPageNumber - 1) * PAGE_SIZE, PAGE_SIZE).items?: listOf()
             LoadResult.Page(
                 data = response,
                 prevKey = null, // Only paging forward.

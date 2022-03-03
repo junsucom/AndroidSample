@@ -18,15 +18,16 @@ import java.util.*
 
 
 private val interceptor : HttpLoggingInterceptor = HttpLoggingInterceptor().apply {
-    this.level = HttpLoggingInterceptor.Level.BODY
+//    this.level = HttpLoggingInterceptor.Level.BODY
 }
 
 private class ItemDummyInterceptor : Interceptor {
     private fun makeFakeResponse(startIndex: Long, count: Int) :String {
-        val fakeNotification = arrayListOf<Item>().also {
-            for (index in startIndex..(startIndex+count+1)) {
+        val fakeNotification = arrayListOf<Item>().apply {
+            for (index in startIndex until startIndex+count) {
                 val now = Date(Date().time  - (index * 60000))
                 val item = Item(
+                    id = index,
                     type = ItemType.TypeA,
                     title = "title $index",
                     message = "message $index",
@@ -36,7 +37,7 @@ private class ItemDummyInterceptor : Interceptor {
                     image = Bitmap.createBitmap(120.px, 120.px, Bitmap.Config.ARGB_8888).fillColor()
                         .toByteArray()
                 )
-                it.add(item)
+                add(item)
             }
         }
         return Gson().toJson(
