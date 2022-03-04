@@ -38,6 +38,7 @@ class MainFragment : AppBaseFragment<FragmentMainBinding>() {
             R.id.menu_action_list_paged_room -> MainFragmentDirections.actionRoomPagedListFragment()
             R.id.menu_action_notification -> MainFragmentDirections.actionNotificationFragment()
             R.id.menu_action_liveData -> MainFragmentDirections.actionLiveDataFragment()
+            R.id.menu_action_sensor -> MainFragmentDirections.actionSensorFragment()
             else -> null
         }?.also {
             findNavController().navigate(it)

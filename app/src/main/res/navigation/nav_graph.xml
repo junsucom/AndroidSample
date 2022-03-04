@@ -30,6 +30,10 @@
         <action
             android:id="@+id/actionLiveDataFragment"
             app:destination="@id/LiveDataFragment" />
+
+        <action
+            android:id="@+id/actionSensorFragment"
+            app:destination="@id/SensorFragment" />
     </fragment>
     <fragment
         android:id="@+id/BlankFragment"
@@ -60,5 +64,11 @@
         android:name="com.junsu.sample.ui.liveData.LiveDataFragment"
         android:label="LiveDataFragment"
         tools:layout="@layout/fragment_live_data">
+    </fragment>
+    <fragment
+        android:id="@+id/SensorFragment"
+        android:name="com.junsu.sample.ui.sensor.SensorFragment"
+        android:label="SensorFragment"
+        tools:layout="@layout/fragment_sensor">
     </fragment>
 </navigation>

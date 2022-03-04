@@ -12,6 +12,7 @@
     <string name="menu_list_paged_network">PagedNetwork</string>
     <string name="menu_notification">Notification</string>
     <string name="menu_liveData">LiveData</string>
+    <string name="menu_sensor">Sensor</string>
 
 
     <string name="notification_channel_id" translatable="false">sample_channel_id</string>
