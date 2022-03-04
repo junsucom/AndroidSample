@@ -3,7 +3,6 @@ package com.junsu.sample.di
 import com.google.gson.GsonBuilder
 import com.junsu.sample.BuildConfig
 import com.junsu.sample.Define
-import com.junsu.sample.SharedData
 import com.junsu.sample.ui.list.paged.network.api.ItemService
 import com.junsu.sample.util.apiInterceptor
 import dagger.Module

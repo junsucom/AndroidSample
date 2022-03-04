@@ -38,7 +38,6 @@ abstract class BaseFragment<T : ViewDataBinding>: Fragment() {
         bind = DataBindingUtil.inflate(inflater, getLayoutResId(), container, false)
         bind.lifecycleOwner = viewLifecycleOwner
         rootView = bind.root
-        initFragment()
 
         requestMultiplePermissions =
             registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { result ->
@@ -60,6 +59,8 @@ abstract class BaseFragment<T : ViewDataBinding>: Fragment() {
                     )
                 }
             }
+
+        initFragment()
         return bind.root
     }
 

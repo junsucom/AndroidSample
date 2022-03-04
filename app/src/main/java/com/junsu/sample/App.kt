@@ -22,7 +22,6 @@ class App : Application(), Configuration.Provider {
         if(BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
         }
-        SharedData.init(applicationContext)
     }
 
     override fun getWorkManagerConfiguration() = Configuration.Builder().run {
